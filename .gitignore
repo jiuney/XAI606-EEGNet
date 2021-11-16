@@ -4,4 +4,4 @@
 
 /data_loader/dataset/bcic4-2a/test/*y.npy
 /data_loader/dataset/bcic4-2a/test_label/
-runs/evaluation.sh
+runs/evaluation.sh'.venv' 

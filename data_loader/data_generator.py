@@ -9,6 +9,8 @@ class DataGenerator:
         if args.mode == 'train':
             self.train_loader = self.__data_loader(args, 'train')
             self.val_loader = self.__data_loader(args, 'val')
+            self.train_loader.dataset.X = self.train_loader.dataset.X.reshape(-1, 22,500)
+            self.val_loader.dataset.X = self.val_loader.dataset.X.reshape(-1, 22,500)
             print(f"train size: {self.train_loader.dataset.X.shape}")
             print(f"val size: {self.val_loader.dataset.X.shape}")
             mini_batch_shape = list(self.train_loader.dataset.X.shape)
@@ -17,6 +19,7 @@ class DataGenerator:
             print("")
         else:
             self.test_loader = self.__data_loader(args, 'test')
+            self.test_loader.dataset.X = self.test_loader.dataset.X.reshape(-1, 22,500)
             print("")
 
     def __data_loader(self, args, phase):
@@ -24,3 +27,4 @@ class DataGenerator:
                           batch_size=args.batch_size,
                           shuffle=True if phase == 'train' else False,
                           drop_last=True if phase == 'train' else False)
+

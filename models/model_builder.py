@@ -7,6 +7,7 @@ from utils.utils import import_model, pretrained_model, write_pickle
 
 class ModelBuilder:
     def __init__(self, args):
+    # def __init__(self, args, **kwargs):
         print("[Build Model]")
         self.model = self.__build_model(args)
         self.__set_device(self.model, args.device)
